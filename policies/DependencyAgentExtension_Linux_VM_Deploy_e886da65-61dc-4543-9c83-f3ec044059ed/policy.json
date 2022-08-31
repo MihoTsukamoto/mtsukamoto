@@ -8,8 +8,8 @@
    "category": "CSS",
    "createdBy": "8911f594-ffda-493a-a7d3-19f698d57a90",
    "createdOn": "2022-08-30T06:54:02.831648Z",
-   "updatedBy": null,
-   "updatedOn": null
+   "updatedBy": "8911f594-ffda-493a-a7d3-19f698d57a90",
+   "updatedOn": "2022-08-31T03:39:54.7211182Z"
   },
   "parameters": {
    "listOfImageIdToInclude": {
@@ -146,14 +146,11 @@
               "anyOf": [
                {
                 "field": "Microsoft.Compute/imageSKU",
-                "in": [
-                 "12-SP2",
-                 "12-SP3",
-                 "12-SP4",
-                 "12-SP5",
-                 "15",
-                 "15-SP1"
-                ]
+                "like": "12*"
+               },
+               {
+                "field": "Microsoft.Compute/imageSKU",
+                "like": "15*"
                }
               ]
              }
@@ -165,11 +162,15 @@
               "anyOf": [
                {
                 "field": "Microsoft.Compute/imageOffer",
-                "like": "sles-12-sp5*"
+                "like": "sles-12-sp*"
                },
                {
                 "field": "Microsoft.Compute/imageOffer",
-                "like": "sles-15-sp1*"
+                "like": "sles-15-sp*"
+               },
+               {
+                "field": "Microsoft.Compute/imageOffer",
+                "like": "sles-sap-15-sp1*"
                }
               ]
              },
@@ -181,18 +182,101 @@
               ]
              }
             ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "allOf": [
+         {
+          "field": "Microsoft.Compute/imagePublisher",
+          "equals": "Canonical"
+         },
+         {
+          "field": "Microsoft.Compute/imageOffer",
+          "in": [
+           "UbuntuServer",
+           "0001-com-ubuntu-server-focal"
+          ]
+         },
+         {
+          "anyOf": [
+           {
+            "field": "Microsoft.Compute/imageSKU",
+            "like": "14.04*LTS"
            },
            {
-            "allOf": [
-             {
-              "field": "Microsoft.Compute/imageOffer",
-              "like": "sles-sap-15-sp1*"
-             },
-             {
-              "field": "Microsoft.Compute/imageSKU",
-              "equals": "gen1"
-             }
-            ]
+            "field": "Microsoft.Compute/imageSKU",
+            "like": "16.04*LTS"
+           },
+           {
+            "field": "Microsoft.Compute/imageSKU",
+            "like": "16_04*lts-gen2"
+           },
+           {
+            "field": "Microsoft.Compute/imageSKU",
+            "like": "18.04*LTS"
+           },
+           {
+            "field": "Microsoft.Compute/imageSKU",
+            "like": "18_04*lts-gen2"
+           },
+           {
+            "field": "Microsoft.Compute/imageSKU",
+            "like": "20_04*lts"
+           },
+           {
+            "field": "Microsoft.Compute/imageSKU",
+            "like": "20_04*lts-gen2"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "allOf": [
+         {
+          "field": "Microsoft.Compute/imagePublisher",
+          "equals": "credativ"
+         },
+         {
+          "field": "Microsoft.Compute/imageOffer",
+          "equals": "Debian"
+         },
+         {
+          "anyOf": [
+           {
+            "field": "Microsoft.Compute/imageSKU",
+            "like": "8*"
+           },
+           {
+            "field": "Microsoft.Compute/imageSKU",
+            "like": "9*"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "allOf": [
+         {
+          "field": "Microsoft.Compute/imagePublisher",
+          "equals": "Oracle"
+         },
+         {
+          "field": "Microsoft.Compute/imageOffer",
+          "equals": "Oracle-Linux"
+         },
+         {
+          "anyOf": [
+           {
+            "field": "Microsoft.Compute/imageSKU",
+            "like": "6.*"
+           },
+           {
+            "field": "Microsoft.Compute/imageSKU",
+            "like": "7.*"
            }
           ]
          }
